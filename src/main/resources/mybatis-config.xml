@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 通过这个配置文件完成mybatis与数据库的连接 -->
+<configuration>
+	<!-- 配置mybatis的log实现为LOG4J -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	
+	<!-- 类型别名可以减少mapper.xml里面冗长的类名 -->
+	<typeAliases>
+		<package name="com.lanou.entity"/>
+	</typeAliases>
+
+
+	<!-- 将mapper文件加入到配置文件中 -->
+	<mappers>
+	 	<mapper resource="com/lanou/mapper/AreaMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/CollectorMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ContactMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/DepartmentMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/DictDetailMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/DictMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ErrorMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/EstateMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/FileMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/FriendlyLinkMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/HeartBeatMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ImageAlbumMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ImageMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ImageTagsMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/LogMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/MenuMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/OrderMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/OwnerMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/PageViewMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/RoleMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/RoleMenuMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/ScrapMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/TagsMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/UserMapper.xml"/>
+	 	<mapper resource="com/lanou/mapper/WeixinMapper.xml"/>
+	 </mappers>
+
+
+
+</configuration>
