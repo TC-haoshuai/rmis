@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.DictMapper">
+	<resultMap id="BaseResultMap" type="com.lanou.entity.Dict">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="dict_tabname" jdbcType="VARCHAR" property="dictTabname" />
+		<result column="dict_colname" jdbcType="VARCHAR" property="dictColname" />
+		<result column="dict_option" jdbcType="VARCHAR" property="dictOption" />
+		<result column="dict_text" jdbcType="VARCHAR" property="dictText" />
+		<result column="dict_sort" jdbcType="INTEGER" property="dictSort" />
+		<result column="dict_name" jdbcType="VARCHAR" property="dictName" />
+	</resultMap>
+	<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs"
+		type="com.lanou.entity.Dict">
+		<result column="dict_sort" jdbcType="LONGVARCHAR" property="dictSort" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, dict_tabname, dict_colname, dict_option, dict_text, dict_sort,
+		dict_name
+	</sql>
+	<sql id="Blob_Column_List">
+		dict_sort
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_dict
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from sys_dict
+		where dict_tabname = 'scrap'
+	</select>
+	<!--遍历 -->
+	<select id="getPageList" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_dict
+		<where>
+			<if test="search != null and search !=''">
+				INSTR(ifnull(dict_tabname,''),'${search}') > 0
+			</if>
+		</where>
+		<if test="subSQL != null and subSQL !='' ">
+			${subSQL}
+		</if>
+	</select>
+	<select id="getTotalCount" resultType="java.lang.Integer">
+		select
+		count(1)
+		from sys_dict
+		<where>
+			<if test="search != null and search !=''">
+				INSTR(ifnull(dict_tabname,''),'${search}') > 0
+			</if>
+		</where>
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from sys_dict
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.lanou.entity.Dict">
+		insert into sys_dict (id, dict_tabname, dict_colname,
+		dict_option, dict_text, dict_sort,
+		dict_name)
+		values (#{id,jdbcType=INTEGER}, #{dictTabname,jdbcType=VARCHAR},
+		#{dictColname,jdbcType=VARCHAR},
+		#{dictOption,jdbcType=VARCHAR}, #{dictText,jdbcType=VARCHAR}, #{dictSort,jdbcType=INTEGER},
+		#{dictName,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.lanou.entity.Dict">
+		insert into sys_dict
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="dictTabname != null">
+				dict_tabname,
+			</if>
+			<if test="dictColname != null">
+				dict_colname,
+			</if>
+			<if test="dictOption != null">
+				dict_option,
+			</if>
+			<if test="dictText != null">
+				dict_text,
+			</if>
+			<if test="dictSort != null">
+				dict_sort,
+			</if>
+			<if test="dictName != null">
+				dict_name,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="dictTabname != null">
+				#{dictTabname,jdbcType=VARCHAR},
+			</if>
+			<if test="dictColname != null">
+				#{dictColname,jdbcType=VARCHAR},
+			</if>
+			<if test="dictOption != null">
+				#{dictOption,jdbcType=VARCHAR},
+			</if>
+			<if test="dictText != null">
+				#{dictText,jdbcType=VARCHAR},
+			</if>
+			<if test="dictSort != null">
+				#{dictSort,jdbcType=INTEGER},
+			</if>
+			<if test="dictName != null">
+				#{dictName,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.lanou.entity.Dict">
+		update sys_dict
+		<set>
+			<if test="dictTabname != null">
+				dict_tabname = #{dictTabname,jdbcType=VARCHAR},
+			</if>
+			<if test="dictColname != null">
+				dict_colname = #{dictColname,jdbcType=VARCHAR},
+			</if>
+			<if test="dictOption != null">
+				dict_option = #{dictOption,jdbcType=VARCHAR},
+			</if>
+			<if test="dictText != null">
+				dict_text = #{dictText,jdbcType=VARCHAR},
+			</if>
+			<if test="dictSort != null">
+				dict_sort = #{dictSort,jdbcType=INTEGER},
+			</if>
+			<if test="dictName != null">
+				dict_name = #{dictName,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.lanou.entity.Dict">
+		update sys_dict
+		set dict_tabname = #{dictTabname,jdbcType=VARCHAR},
+		dict_colname = #{dictColname,jdbcType=VARCHAR},
+		dict_option = #{dictOption,jdbcType=VARCHAR},
+		dict_text = #{dictText,jdbcType=VARCHAR},
+		dict_sort = #{dictSort,jdbcType=INTEGER},
+		dict_name = #{dictName,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
