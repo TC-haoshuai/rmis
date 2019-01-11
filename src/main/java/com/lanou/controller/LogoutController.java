@@ -24,7 +24,7 @@ public class LogoutController {
 				+ "/";
 		//清除session
 		request.getSession().removeAttribute(Constants.USER_SESSION);
-		m.setViewName("redirect:"+basePath+"admin/login");
+		m.setViewName("redirect:"+basePath);
 		return m;
 	}
 }
