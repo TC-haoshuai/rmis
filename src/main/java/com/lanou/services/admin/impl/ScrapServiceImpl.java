@@ -22,7 +22,7 @@ public class ScrapServiceImpl extends BaseService  implements ScrapService {
 	
 	public DataTables getScrapList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("scrap_name asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(ScrapMapper.class, dataTables.getColumn());
@@ -31,13 +31,13 @@ public class ScrapServiceImpl extends BaseService  implements ScrapService {
 			}
 		}
 		
-		PageInfo<Scrap> pageInfo = new PageInfo<Scrap>(scrapMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Scrap> pageInfo = new PageInfo<Scrap>(scrapMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Scrap>());
 		return dataTables;
 	}
-	
+
 	@Override
 	public int totalCount(String name) {
 		return scrapMapper.getTotalCount(name);

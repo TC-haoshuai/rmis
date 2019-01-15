@@ -31,7 +31,7 @@ public class HousingEstateServiceImpl extends BaseService implements HousingEsta
 	@Override
 	public DataTables getEstateList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("code asc");
 
 		if (!StringUtils.isEmpty(dataTables.getColumn())) {
 			String column = propertyToColumn(EstateMapper.class, dataTables.getColumn());
@@ -41,7 +41,7 @@ public class HousingEstateServiceImpl extends BaseService implements HousingEsta
 		}
 
 		PageInfo<Estate> pageInfo = new PageInfo<Estate>(
-				estateMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+				estateMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Estate>());

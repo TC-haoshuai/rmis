@@ -40,7 +40,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 	@Override
 	public DataTables getUserList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("username asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(UserMapper.class, dataTables.getColumn());
@@ -49,7 +49,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 			}
 		}
 		
-		PageInfo<User> pageInfo = new PageInfo<User>(userMapper.getPageList(dataTables.getSearch(),dataTables.getTimeMin(),dataTables.getTimeMax(), dataTables.getSubSQL()));
+		PageInfo<User> pageInfo = new PageInfo<User>(userMapper.getPageList(dataTables.getSearch(),dataTables.getTimeMin(),dataTables.getTimeMax(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch(),dataTables.getTimeMin(),dataTables.getTimeMax()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch(),dataTables.getTimeMin(),dataTables.getTimeMax()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<User>());

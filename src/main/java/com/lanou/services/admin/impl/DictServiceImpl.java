@@ -22,7 +22,7 @@ public class DictServiceImpl extends BaseService  implements DictService {
 	
 	public DataTables getDictList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("dict_tabname asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(DictMapper.class, dataTables.getColumn());
@@ -31,7 +31,7 @@ public class DictServiceImpl extends BaseService  implements DictService {
 			}
 		}
 		
-		PageInfo<Dict> pageInfo = new PageInfo<Dict>(dictMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Dict> pageInfo = new PageInfo<Dict>(dictMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Dict>());

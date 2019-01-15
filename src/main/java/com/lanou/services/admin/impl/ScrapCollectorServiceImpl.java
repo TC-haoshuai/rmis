@@ -22,7 +22,7 @@ public class ScrapCollectorServiceImpl extends BaseService  implements ScrapColl
 	
 	public DataTables getScrapCollectorList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("name asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(CollectorMapper.class, dataTables.getColumn());
@@ -31,7 +31,7 @@ public class ScrapCollectorServiceImpl extends BaseService  implements ScrapColl
 			}
 		}
 		
-		PageInfo<Collector> pageInfo = new PageInfo<Collector>(collectorMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Collector> pageInfo = new PageInfo<Collector>(collectorMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Collector>());

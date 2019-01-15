@@ -23,7 +23,7 @@ public class RoleServiceImpl extends BaseService implements RoleService{
 	
 	public DataTables getRoleList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("name asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(RoleMapper.class, dataTables.getColumn());
@@ -32,7 +32,7 @@ public class RoleServiceImpl extends BaseService implements RoleService{
 			}
 		}
 		
-		PageInfo<Role> pageInfo = new PageInfo<Role>(roleMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Role> pageInfo = new PageInfo<Role>(roleMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Role>());

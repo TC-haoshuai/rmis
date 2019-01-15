@@ -23,7 +23,7 @@ public class ReclamationOrderServiceImpl extends BaseService  implements Reclama
 	
 	public DataTables getOrderList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("order_no asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(OrderMapper.class, dataTables.getColumn());
@@ -32,7 +32,7 @@ public class ReclamationOrderServiceImpl extends BaseService  implements Reclama
 			}
 		}
 		
-		PageInfo<Order> pageInfo = new PageInfo<Order>(orderMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Order> pageInfo = new PageInfo<Order>(orderMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Order>());

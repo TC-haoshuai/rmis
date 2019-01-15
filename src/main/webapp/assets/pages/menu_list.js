@@ -6,7 +6,7 @@ var datatable = null,idList=[];
 $(function() {
 	datatable = $('.table-sort').DataTable({
 		order: [
-			[8, 'asc']
+			[8, 'desc']
 		],
 		ajax: {
 			url: contextPath + "/menu/getPageList",

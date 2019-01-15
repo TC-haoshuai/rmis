@@ -79,8 +79,9 @@
   	SELECT
   	<include refid="Base_Column_List" />
   	FROM sys_user
-	where username = #{username,jdbcType=STRING}
+	where username = #{username,jdbcType=VARCHAR}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from sys_user
     where id = #{id,jdbcType=INTEGER}

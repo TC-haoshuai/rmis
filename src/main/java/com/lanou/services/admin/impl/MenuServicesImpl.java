@@ -31,7 +31,7 @@ public class MenuServicesImpl extends BaseService implements MenuServices {
 			}
 		}
 		
-		PageInfo<Menu> pageInfo = new PageInfo<Menu>(menuMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Menu> pageInfo = new PageInfo<Menu>(menuMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Menu>());

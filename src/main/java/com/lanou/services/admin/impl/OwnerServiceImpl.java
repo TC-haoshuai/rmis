@@ -23,7 +23,7 @@ public class OwnerServiceImpl extends BaseService  implements OwnerService{
 	
 	public DataTables getOwnerList(DataTables dataTables) {
 		PageHelper.startPage(dataTables.getStart(), dataTables.getLength()); // 核心分页代码 
-		PageHelper.orderBy("sort asc");
+		PageHelper.orderBy("name asc");
 		
 		if(!StringUtils.isEmpty(dataTables.getColumn())){
 			String column = propertyToColumn(OwnerMapper.class, dataTables.getColumn());
@@ -32,7 +32,7 @@ public class OwnerServiceImpl extends BaseService  implements OwnerService{
 			}
 		}
 		
-		PageInfo<Owner> pageInfo = new PageInfo<Owner>(ownerMapper.getPageList(dataTables.getSearch(), dataTables.getSubSQL()));
+		PageInfo<Owner> pageInfo = new PageInfo<Owner>(ownerMapper.getPageList(dataTables.getSearch(), null));
 		dataTables.setRecordsTotal(totalCount(dataTables.getSearch()));
 		dataTables.setRecordsFiltered(totalCount(dataTables.getSearch()));
 		dataTables.setData(pageInfo.getList() != null ? pageInfo.getList() : new ArrayList<Owner>());
