@@ -45,8 +45,8 @@ public class MenuController {
 	}
 	@ResponseBody
 	@RequestMapping("/menu/getMenuById")
-	private  Object getUserById(@RequestParam("id") Integer id){
-		return menuServices.getMenuById(id);
+	private  Object getUserById(Integer id){
+		 return menuServices.getMenuById(id);
 	}
 
 	@ResponseBody

@@ -74,7 +74,7 @@
 	</div>
 	<div class="footer">Copyright 2016 All Rights Reserved.</div>
 	
-</script>
+
 	
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/assets/lib/jquery/1.9.1/jquery.min.js"></script>

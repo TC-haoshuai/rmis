@@ -65,7 +65,7 @@ public class LoginController {
 		map.put("password", passWord);
 		User user = userLoginServices.login(userName,passWord);
 		String getpass = user.getPassword();
-		if (validateCode.equalsIgnoreCase(verCode)) {
+		/*if (validateCode.equalsIgnoreCase(verCode)) {
 			if (null != user&&getpass.equals(passWord)) {
 				return "true";
 			} else {
@@ -73,6 +73,11 @@ public class LoginController {
 			}
 		} else {
 			return "false_ValidateCode";
+		}*/
+		if (null != user&&getpass.equals(passWord)) {
+			return "true";
+		} else {
+			return "false";
 		}
 
 	}

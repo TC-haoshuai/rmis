@@ -3,19 +3,22 @@
  */
 $(function($) {
 	var entityID = getQueryString('id');
+	var result1;
+    $.ajaxSettings.async = false;
 	if (entityID) {
 		$.post(contextPath + "/menu/getMenuById", {
 			"id" : entityID
 		}, function(result) {
+			result1 = result;
 			$("#form-add").JsonToForm(result);
 		});
 	}
 
-	$('input[type=radio]').iCheck({
+/*	$('input[type=radio]').iCheck({
 		checkboxClass : 'icheckbox_minimal',
 		radioClass : 'iradio_minimal',
 		increaseArea : '20%'
-	});
+	});*/
 	$.ajax({
 		type : "post",
 		url : contextPath + "/menu/menuListJson",
@@ -24,8 +27,13 @@ $(function($) {
 			if (data.state == true) {
 				var s = "";
 				for (var i = 0; i < data.menuList.length; i++) {
-					s += "<option value=" + data.menuList[i].id + ">"
-							+ data.menuList[i].name + "</option>"
+                    if (data.menuList[i].id == result1.parentId) {
+                        s += "<option value=" + data.menuList[i].id + " selected = \"selected\">"
+                            + data.menuList[i].name + "</option>"
+                    } else {
+                    s += "<option value=" + data.menuList[i].id + ">"
+                        + data.menuList[i].name + "</option>"
+               		 }
 				}
 				$("#menuList").append($(s));
 			} else {

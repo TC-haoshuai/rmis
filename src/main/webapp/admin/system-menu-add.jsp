@@ -64,7 +64,7 @@
 					<div class="row cl">
 						<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>状态:</label>
 						<div class="formControls col-xs-8 col-sm-9">
-							<input name="status" type="radio" id="status-1" value="1" checked>
+							<input name="status" type="radio" id="status-1" value="1" >
 							<label for="status-1">显示</label>
 							<input name="status" type="radio" id="status-2" value="2">
 							<label for="status-2">隐藏</label>
@@ -79,7 +79,7 @@
 							<span class="select-box">
 								<select name="parentId" class="select" id="menuList">
 								
-								<select>
+								</select>
 							</span>
 							
 						</div>
