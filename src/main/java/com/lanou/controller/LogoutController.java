@@ -23,7 +23,8 @@ public class LogoutController {
 		String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path
 				+ "/";
 		//清除session
-		request.getSession().removeAttribute(Constants.USER_SESSION);
+//		request.getSession().removeAttribute(Constants.USER_SESSION);
+		request.getSession().invalidate();
 		m.setViewName("redirect:"+basePath);
 		return m;
 	}

@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
@@ -27,9 +27,28 @@
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />  
         </list>  
     </property>  
-</bean>  
+</bean>
 
-
+	<!-- 配置拦截器 -->
+	<!--<mvc:interceptors>
+		<mvc:interceptor>
+		&lt;!&ndash; 拦截所有mvc控制器 &ndash;&gt;
+		<mvc:mapping path="/admin/index.jsp"/>
+		&lt;!&ndash; mvc:exclude-mapping是另外一种拦截，它可以在你后来的测试中对某个页面进行不拦截，这样就不用在
+            LoginInterceptor的preHandler方法里面获取不拦截的请求uri地址了(优选) &ndash;&gt;
+		<mvc:exclude-mapping path="/goLogin" />
+		<mvc:exclude-mapping path="/getValidateCode" />
+		<bean class="com.lanou.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--两个星号-->
+            <mvc:mapping path="/**"/>
+            <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求，此为自定义拦截器的路径 -->
+            <bean class="com.lanou.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 	
 </beans>
 

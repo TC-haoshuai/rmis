@@ -56,8 +56,8 @@ public class LoginController {
 	@RequestMapping("/goLogin")
 	public Object login(HttpServletRequest request) {
 		String userName = request.getParameter("username");
-		 String passWord = MD5Utils.getMD5Value(request.getParameter("password"));
-
+		String passWord = MD5Utils.getMD5Value(request.getParameter("password"));
+        HttpSession session = request.getSession(true);
 		String validateCode = request.getParameter("ValidateCode");
 		String verCode = (String) request.getSession().getAttribute("verCode");
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -65,21 +65,16 @@ public class LoginController {
 		map.put("password", passWord);
 		User user = userLoginServices.login(userName,passWord);
 		String getpass = user.getPassword();
-		/*if (validateCode.equalsIgnoreCase(verCode)) {
+		if (validateCode.equalsIgnoreCase(verCode)) {
 			if (null != user&&getpass.equals(passWord)) {
+				session.setAttribute("password666",passWord);
 				return "true";
 			} else {
 				return "false";
 			}
 		} else {
 			return "false_ValidateCode";
-		}*/
-		if (null != user&&getpass.equals(passWord)) {
-			return "true";
-		} else {
-			return "false";
 		}
-
 	}
 
 }

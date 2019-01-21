@@ -1,9 +1,9 @@
 $(function() {
 	var datatable = $('.table-sort').DataTable({
-		order: [
+        order: [
 			[0, 'desc']
 		],
-		ajax: {
+        ajax: {
 			url: contextPath + "/file/getPageList",
 			type: 'post',
 			data: function(d) {     //添加额外的参数给服务器
@@ -11,9 +11,16 @@ $(function() {
 				d.search = $("#search").val(),
 				d.timeMin = $("#timeMin").val(),
 				d.timeMax = $("#timeMax").val()
-			}
+			},
+            error: function (xhr, textStatus) {
+                console.log("xhr:"+xhr);
+                console.log("textStatus:"+textStatus);
+                xhr.statusCode();
+                console.log(xhr.statusCode());
+            },
 		},
-		columns: [{
+
+        columns: [{
 			data: "id"
 		}, { 
 			data: "fName"

@@ -5,16 +5,24 @@ var datatable = null,idList=[];
 
 $(function() {
 	datatable = $('.table-sort').DataTable({
+        processing: true,
+        serverSide: true,
 		order: [
-			[8, 'desc']
+			[1, 'asc']
 		],
 		ajax: {
 			url: contextPath + "/menu/getPageList",
 			type: 'post',
-			data: function(d) {
-				d.search = $('#search').val();
-			}
-		},
+            data: function(d) {
+                d.search = $('#search').val();
+            },
+            error: function (xhr, textStatus) {
+                console.log("xhr:"+xhr);
+                console.log("textStatus:"+textStatus);
+                xhr.statusCode();
+                console.log(xhr.statusCode());
+            },
+        },
 		columns: [{
 			data: "id"
 		}, {
@@ -71,7 +79,20 @@ $(function() {
 				var btns = new Array('edit','del');
 				return getDTOperateBtn(btns, row.id, 'system-menu-add.jsp', null, '/menu/del/', reloadTable);
 			}
-		}]
+		}],
+/*        "fnServerData":function(XMLHttpRequest, textStatus) {
+            // 通过XMLHttpRequest取得响应头，sessionstatus
+            var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus");
+            if (sessionstatus == "TIMEOUT") {
+                var win = window;
+                while (win != win.top){
+                    win = win.top;
+                }
+                $("#table666").dataTable().fnDestroy();
+                win.location.href= XMLHttpRequest.getResponseHeader("CONTEXTPATH");
+            }
+        }*/
+
 	});
 });
 
@@ -92,3 +113,19 @@ function getDTSelect() {
 	}
 	return idList;
 }
+$.ajaxSetup( {
+//设置ajax请求结束后的执行动作
+    complete :
+        function(XMLHttpRequest, textStatus) {
+    	// 通过XMLHttpRequest取得响应头，sessionstatus
+            var sessionstatus = XMLHttpRequest.getResponseHeader("sessionstatus");
+            if (sessionstatus == "TIMEOUT") {
+                var win = window;
+                while (win != win.top){
+                    win = win.top;
+                }
+                alert("请先登录");
+                win.location.href= XMLHttpRequest.getResponseHeader("CONTEXTPATH");
+            }
+        }
+});

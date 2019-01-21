@@ -3,13 +3,18 @@
  */
 $(function($) {
 	var entityID = getQueryString('id');
+	var result1;
 	if(entityID) {
+        $.ajaxSettings.async = false;
 		$.post(contextPath + "/admin/getAdminById", {
 			"id": entityID
 		}, function(result) {
+			result1 = result;
 			$("#form-admin-add").JsonToForm(result);
 		});
+        $.ajaxSettings.async = true;
 	}
+
 	
 	$.ajax({
 		type: "post",
@@ -19,7 +24,11 @@ $(function($) {
 			if(data.state == true) {
 					var s = "";
 				for(var i = 0;i<data.roleList.length;i++){
-					s+="<option value="+data.roleList[i].id+">"+data.roleList[i].name+"</option>"
+					if (data.state == true){
+					s+="<option value="+data.roleList[i].id + " selected = \"selected\">" +data.roleList[i].name+ "</option>"
+				}else{
+						s+="<option value="+data.roleList[i].id+">"+data.roleList[i].name+"</option>"
+                    }
 				}
 				$("#roleList").append($(s));
 			} else {
@@ -32,11 +41,11 @@ $(function($) {
 		}
 	});
 
-	$('input[type=radio]').iCheck({
+/*	$('input[type=radio]').iCheck({
 		checkboxClass: 'icheckbox_minimal',
 		radioClass: 'iradio_minimal',
 		increaseArea: '20%'
-	});
+	});*/
 
 	$("#form-admin-add").validate({
 		rules: {

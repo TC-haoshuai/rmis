@@ -64,34 +64,27 @@
 					class="c-red">*</span>性别：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<div class="radio-box">
-						<input name="sex" type="radio" id="sex-1" checked> <label
-							for="sex-1">男</label>
+						<input name="usertype" type="radio" id="usertype-1"  value="1">
+						<label for="usertype-1">男</label>
 					</div>
 					<div class="radio-box">
-						<input type="radio" id="sex-2" name="sex"> <label
-							for="sex-2">女</label>
+						<input type="radio" id="usertype-2" name="usertype" value="2">
+						<label for="usertype-2">女</label>
 					</div>
 				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-3"><span
+						class="c-red">*</span>启用状态</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<div class="radio-box" ">
-							<input name="state" type="radio" id="0" value="0" checked="checked">
-							<label for="state-0">未启用</label>
+						<div class="radio-box" >
+							<input name="state" type="radio" id="state-1" value="1"  >
+							<label for="state-1">启用</label>
 						</div>
-						<div class="radio-box" ">
-							<input name="state" type="radio" id="1" value="1">
-							<label for="state-1">已启用</label>
-					</div>
-						<div class="radio-box" ">
-							<input name="state" type="radio" id="2" value="2">
-							<label for="state-2">已禁用</label>
-					</div>
-						<!-- <input name="state" type="radio" id="status-1" value="1" checked>
-						<label for="status-1">已启用</label> 
-						<input name="state" type="radio" id="status-2" value="2"> 
-						<label for="status-2">已禁用</label>
-						<input name="state" type="radio" id="status-0" value="0"> 
-						<label for="status-2">未启用</label> -->
-					</div>
+						<div class="radio-box" >
+							<input name="state" type="radio" id="state-2" value="2" >
+							<label for="state-2">禁用</label>
+						</div>
 				</div>
 			</div>
 			<div class="row cl">
@@ -112,9 +105,10 @@
 				<label class="form-label col-xs-4 col-sm-3"><span
 					class="c-red">*</span>角色：</label>
 				<div class="formControls col-xs-8 col-sm-9">
-					<span class="select-box"> <select name="roleId"
-						class="select" id="roleList">
-							<select></span>
+					<span class="select-box">
+						<select name="roleId" class="select" id="roleList">
+						</select>
+					</span>
 				</div>
 			</div>
 			<div class="row cl">

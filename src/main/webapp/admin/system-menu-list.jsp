@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<div class="mt-20">
-				<table class="table table-border table-bordered table-hover table-bg table-sort" width="100%">
+				<table class="table table-border table-bordered table-hover table-bg table-sort" width="100%" id="table666">
 					<thead>
 						<tr class="text-c">
 							<th><input id="input-0" type="checkbox" name="all"><label for="input-0"></label></th>
@@ -57,6 +57,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="../assets/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../assets/lib/jquery/1.9.1/jquery.json.min.js"></script>
 		<script type="text/javascript" src="../assets/lib/layer/2.1/layer.js"></script>
 		<script type="text/javascript" src="../assets/lib/icheck/icheck.min.js"></script>
 		<script type="text/javascript" src="../assets/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>

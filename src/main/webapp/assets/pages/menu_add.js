@@ -27,7 +27,7 @@ $(function($) {
 			if (data.state == true) {
 				var s = "";
 				for (var i = 0; i < data.menuList.length; i++) {
-                    if (data.menuList[i].id == result1.parentId) {
+                    if (data.state == true) {
                         s += "<option value=" + data.menuList[i].id + " selected = \"selected\">"
                             + data.menuList[i].name + "</option>"
                     } else {

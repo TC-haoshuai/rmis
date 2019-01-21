@@ -74,11 +74,8 @@
 					<div class="row cl">
 						<label class="form-label col-xs-4 col-sm-3">上级菜单:</label>
 						<div class="formControls col-xs-8 col-sm-9">
-							<!-- <input type="text" name="parentName" id="parentName" class="input-text" placeholder="点击选取上级菜单">
-							<input type="hidden" name="parentId" id="parentId"> -->
 							<span class="select-box">
 								<select name="parentId" class="select" id="menuList">
-								
 								</select>
 							</span>
 							

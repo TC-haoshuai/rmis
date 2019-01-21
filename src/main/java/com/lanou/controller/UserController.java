@@ -73,6 +73,7 @@ public class UserController {
 		Map<String, Object> map = new HashMap<>();
 		
 		user.setPassword(MD5Utils.getMD5Value(user.getPassword()));
+		user.setCreateTime(new Date());
 		if (userService.insertSelective(user)>0) {
 			map.put("status", 200);
 		} else {

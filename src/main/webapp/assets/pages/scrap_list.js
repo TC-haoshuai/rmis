@@ -13,8 +13,15 @@ $(function() {
 			type: 'post',
 			data: function(d) {
 				d.search = $('#search').val();
-			}
+			},
+            error: function (xhr, textStatus) {
+                console.log("xhr:"+xhr);
+                console.log("textStatus:"+textStatus);
+                xhr.statusCode();
+                console.log(xhr.statusCode());
+            },
 		},
+
 		columns: [{
 			data: "id"
 		}, {
