@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 通过这个配置文件完成mybatis与数据库的连接 -->
+<configuration>
+	<!-- 配置mybatis的log实现为LOG4J -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	
+	<!-- 类型别名可以减少mapper.xml里面冗长的类名 -->
+	<typeAliases>
+		<package name="com.lanou.main.entity"/>
+	</typeAliases>
+
+	<plugins>
+		<!--注意这里要写成PageInterceptor, 5.0之前的版本都是写PageHelper, 5.0之后要换成PageInterceptor-->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--<property name="helperDialect" value="mysql" />-->
+			<property name="reasonable" value="true" />
+		</plugin>
+	</plugins>
+
+	<!-- 将mapper文件加入到配置文件中 -->
+	<mappers>
+	 	<mapper resource="com/lanou/main/mapper/AreaMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/CollectorMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ContactMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/DepartmentMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/DictDetailMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/DictMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ErrorMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/EstateMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/FileMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/FriendlyLinkMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/HeartBeatMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ImageAlbumMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ImageMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ImageTagsMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/LogMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/MenuMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/OrderMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/OwnerMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/PageViewMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/RoleMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/RoleMenuMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/ScrapMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/TagsMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/UserMapper.xml"/>
+	 	<mapper resource="com/lanou/main/mapper/WeixinMapper.xml"/>
+	 </mappers>
+
+
+
+</configuration>

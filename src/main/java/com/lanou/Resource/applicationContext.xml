@@ -14,11 +14,11 @@
 
 
 	<!-- 扫描注解 -->
-	<context:component-scan base-package="com.lanou" />
+	<context:component-scan base-package="com.lanou.main" />
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 ,包下的类需要使用@MapperScan注解,否则容器注入会失败 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.lanou.mapper.*" />
+		<property name="basePackage" value="com.lanou.main.mapper.*" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
@@ -26,7 +26,7 @@
 	<!-- 读取配置database.properties -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:database.properties" />
+		<property name="location" value="classpath:com/lanou/Resource/database.properties" />
 	</bean>
 
 	<!-- 获取数据源 -->
@@ -65,14 +65,14 @@
 	<!--配置sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="configLocation" value="classpath:com/lanou/Resource/mybatis-config.xml" />
 		<!--<property name="mapperLocations" value="classpath:com/lanou/mapper/*.xml"/>-->
 	</bean>
 
 	<!--扫描mapper-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!--扫描包的路径-->
-        <property name="basePackage" value="com.lanou.mapper"/>
+        <property name="basePackage" value="com.lanou.main.mapper"/>
         
         <!--注入sqlsession工程bean的名字-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
