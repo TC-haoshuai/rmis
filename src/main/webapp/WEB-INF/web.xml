@@ -29,7 +29,7 @@
 
 
 
-	<!-- 让spring容器随项目启动而创建, 随项目关闭而销毁-->
+	<!-- 让spring容器随项目启动而创建, 随项目关闭而销毁.-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
