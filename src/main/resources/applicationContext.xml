@@ -26,7 +26,7 @@
 	<!-- 读取配置database.properties -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:com/lanou/Resource/database.properties" />
+		<property name="location" value="classpath:database.properties" />
 	</bean>
 
 	<!-- 获取数据源 -->
@@ -65,7 +65,7 @@
 	<!--配置sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:com/lanou/Resource/mybatis-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!--<property name="mapperLocations" value="classpath:com/lanou/mapper/*.xml"/>-->
 	</bean>
 
