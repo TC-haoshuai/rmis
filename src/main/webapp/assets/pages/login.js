@@ -36,7 +36,7 @@ $('#login_btn').on('click', function() {
                 }else {
                     $('.social-login').html("登陆成功！").css({color:"green"});
                 	setTimeout(function () {
-                		 location.href = "/admin/index.jsp";
+                		 location.href = contextPath+"/admin/index.jsp";
                 	}, 1000); //页面刷新
                 	return false;
                 }

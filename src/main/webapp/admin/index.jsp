@@ -149,18 +149,18 @@
 					<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 					<dd>
 						<ul>
-						<!-- 	<li>
+							<li>
 								<a _href="system-base.jsp" data-title="系统设置" href="javascript:void(0)">系统设置</a>
-							</li> -->
+							</li>
 							<li>
 								<a _href="system-dict-list.jsp" data-title="数据字典" href="javascript:void(0)">数据字典</a>
 							</li>
-							<!-- <li>
+							<li>
 								<a _href="system-shielding.jsp" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a>
 							</li>
 							<li>
 								<a _href="system-log.jsp" data-title="系统日志" href="javascript:void(0)">系统日志</a>
-							</li> -->
+							</li>
 						</ul>
 					</dd>
 				</dl>
